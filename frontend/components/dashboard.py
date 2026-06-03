@@ -1525,8 +1525,6 @@ def show_dashboard():
 
             "Cardinality Analysis",
 
-            "Correlation Ranking",
-
             "Outlier Percentage",
 
             "Dataset Quality Score"
@@ -1684,60 +1682,60 @@ def show_dashboard():
                 "No categorical columns available."
             )
 
-    # =====================================================
-    # CORRELATION RANKING
-    # =====================================================
+    # # =====================================================
+    # # CORRELATION RANKING
+    # # =====================================================
 
-    elif analytics_option == "Correlation Ranking":
+    # elif analytics_option == "Correlation Ranking":
 
-        if len(numeric_cols) > 1:
+    #     if len(numeric_cols) > 1:
 
-            # corr_matrix = (
-            #     chart_df[numeric_cols]
-            #     .corr()
-            #     .abs()
-            # )
+    #         # corr_matrix = (
+    #         #     chart_df[numeric_cols]
+    #         #     .corr()
+    #         #     .abs()
+    #         # )
 
-            # corr_pairs = (
+    #         # corr_pairs = (
 
-            #     corr_matrix.unstack()
-            #     .sort_values(ascending=False)
-            # )
+    #         #     corr_matrix.unstack()
+    #         #     .sort_values(ascending=False)
+    #         # )
 
-            corr_matrix = corr_matrix.values[
-                np.tril_indices_from(corr_matrix)
-            ] = np.nan
+    #         corr_matrix = corr_matrix.values[
+    #             np.tril_indices_from(corr_matrix)
+    #         ] = np.nan
 
-            corr_pairs = ( corr_matrix.unstack()
-                .dropna()
-                .sort_values(ascending=False)
-            )
+    #         corr_pairs = ( corr_matrix.unstack()
+    #             .dropna()
+    #             .sort_values(ascending=False)
+    #         )
 
-            corr_pairs = corr_pairs[
-                corr_pairs < 1
-            ]
+    #         corr_pairs = corr_pairs[
+    #             corr_pairs < 1
+    #         ]
 
-            corr_df = pd.DataFrame({
+    #         corr_df = pd.DataFrame({
 
-                "Feature Pair":
-                [f"{idx[0]} ↔ {idx[1]}" for idx in corr_pairs.index],
+    #             "Feature Pair":
+    #             [f"{idx[0]} ↔ {idx[1]}" for idx in corr_pairs.index],
 
-                "Correlation":
-                corr_pairs.values
-            })
+    #             "Correlation":
+    #             corr_pairs.values
+    #         })
 
-            st.dataframe(
+    #         st.dataframe(
 
-                corr_df.head(20),
+    #             corr_df.head(20),
 
-                use_container_width=True
-            )
+    #             use_container_width=True
+    #         )
 
-        else:
+        # else:
 
-            st.info(
-                "Not enough numeric columns."
-            )
+        #     st.info(
+        #         "Not enough numeric columns."
+        #     )
 
     # =====================================================
     # OUTLIER %

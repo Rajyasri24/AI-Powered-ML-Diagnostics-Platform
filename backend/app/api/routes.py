@@ -10,6 +10,11 @@ import numpy as np
 import os
 import time
 
+
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "http://127.0.0.1:8000"
+)
 from sklearn.preprocessing import StandardScaler
 
 from sklearn.model_selection import train_test_split
@@ -724,10 +729,16 @@ async def analyze_dataset_route(
             llm_response,
 
             "shap":
-            shap_path,
+            (
+            f"{BACKEND_URL}/{shap_path}"
+             if shap_path else None
+            ),
 
             "cm":
-            cm_path,
+            (
+             f"{BACKEND_URL}/{cm_path}"
+             if cm_path else None
+            ),
 
             "dataset_findings":
             dataset_analysis[
