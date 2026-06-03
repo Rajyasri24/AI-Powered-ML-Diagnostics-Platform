@@ -6,6 +6,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+import os
 
 
 def show_analyze():
@@ -240,10 +241,13 @@ def show_analyze():
                         "model_name":
                         model_name
                     }
-
+                    BACKEND_URL = os.getenv(
+                        "BACKEND_URL",
+                        "http://127.0.0.1:8000"
+                    )
                     response = requests.post(
 
-                        "http://127.0.0.1:8000/analyze",
+                         f"{BACKEND_URL}/analyze",
 
                         files=files,
 
