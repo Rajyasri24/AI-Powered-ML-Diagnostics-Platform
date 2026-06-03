@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# Databases
+*.db
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Streamlit Secrets
+.streamlit/secrets.toml
+
+# Models
+*.pkl
+*.joblib
+
+# Generated Outputs
+static/*.png
+
+# Notebook Cache
+.ipynb_checkpoints/
+
+# Build Artifacts
+build/
+dist/
+*.egg-info/
+
+# Cache
+.cache/
